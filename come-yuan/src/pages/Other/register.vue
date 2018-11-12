@@ -2,39 +2,37 @@
 	<transition name="register_fade">
 		<section class="fs1d5r lh2r full flex-grail register">
 			<headers class="bgcnone" title=""></headers>
-			<main class="pr register_mains">
-				<div class="pa center w100p pv4r ph3r bsbb h100p">
-					<form @submit.prevent="user_register" class="bgcwhite h100p br6px pv4r ph3r bsbb fs1d2r">
-						<p class="tac fs1d9r mb1r">注册</p>
-						<p>
-							<input type="tel" :class="{act_border : phone_show}" @focus="phone_show = false" v-model="user_mesg.phone" placeholder="请输入手机号" />
-							<span v-show="phone_show">{{error_msg_phone}}</span>
+			<main class="register_mains pv4r ph3r bsbb">
+				<form @submit.prevent="user_register" class="bgcwhite h100p br6px pv4r ph3r bsbb fs1d2r">
+					<p class="tac fs1d9r mb1r">注册</p>
+					<p>
+						<input type="tel" :class="{act_border : phone_show}" @focus="phone_show = false" v-model="user_mesg.phone" placeholder="请输入手机号" />
+						<span v-show="phone_show">{{error_msg_phone}}</span>
+					</p>
+					<p>
+						<input type="text" :class="{act_border : password_show}" @focus="password_show = false" v-model="user_mesg.pasword" placeholder="请输入密码" />
+						<span v-show="password_show">{{error_msg_password}}</span>
+					</p>
+					<p>
+						<input type="text" :class="{act_border : confirm_show}" @focus="confirm_show = false" v-model="user_mesg.confirm_password" placeholder="请确认密码" />
+						<span v-show="confirm_show">{{error_msg_confirm}}</span>
+					</p>
+					<div class="">
+						<p class="box">
+							<input type="number" :class="{act_border : code_show}" @focus="code_show = false" v-model="user_mesg.code" class="item" placeholder="验证码" />
+							<button type="button" @click="sendCode" class="item nine999 mt2r ml5r br2r b1">{{count_down}}</button>
 						</p>
-						<p>
-							<input type="text" :class="{act_border : password_show}" @focus="password_show = false" v-model="user_mesg.pasword" placeholder="请输入密码" />
-							<span v-show="password_show">{{error_msg_password}}</span>
+						<span v-show="code_show">{{error_msg_code}}</span>
+					</div>
+					<div class="dv mt4r">
+						<p class="">
+							<button type="submit" class="btn1 white">立即注册</button>
 						</p>
-						<p>
-							<input type="text" :class="{act_border : confirm_show}" @focus="confirm_show = false" v-model="user_mesg.confirm_password" placeholder="请确认密码" />
-							<span v-show="confirm_show">{{error_msg_confirm}}</span>
+						<p class="mt2r">
+							<button type="button" class="b1 nine999" @click="$router.replace('/login')">已有账户，直接登录</button>
 						</p>
-						<div class="">
-							<p class="box">
-								<input type="number" :class="{act_border : code_show}" @focus="code_show = false" v-model="user_mesg.code" class="item" placeholder="验证码" />
-								<button type="button" @click="sendCode" class="item nine999 mt2d5r ml5r br2r b1">{{count_down}}</button>
-							</p>
-							<span v-show="code_show">{{error_msg_code}}</span>
-						</div>
-						<div class="dv mt6r">
-							<p class="">
-								<button type="submit" class="btn1 white">立即注册</button>
-							</p>
-							<p class="mt2r">
-								<button type="button" class="b1 nine999" @click="$router.replace('/login')">已有账户，直接登录</button>
-							</p>
-						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 			</main>
 		</section>
 	</transition>
@@ -82,7 +80,12 @@
 				const _this = this;
 				var isGo = false;
 				
-				var local_msg = JSON.parse(this.$store.getters.current_user);
+				if(this.$store.getters.current_user.length>0){
+					var local_msg = JSON.parse(this.$store.getters.current_user);
+				}else{
+					var local_msg = this.$store.getters.current_user;
+				}
+				
 				local_msg.forEach((val,index) => {
 					if(data_msg.phone == val.phone){
 						_this.phone_show = true;
@@ -90,12 +93,15 @@
 						isGo = true;
 					}
 				});
+				
 				if(isGo){
 					return;
 				}
+				
 				if(!this.isPhone() || !this.isPassword() || !this.isConfirm() || !this.isCode()){
 					return;
 				}
+				
 				local_msg.push(data_msg);
 				localStorage.setItem('key', JSON.stringify(local_msg));
 				this.$store.commit("setUser", JSON.stringify(local_msg));
@@ -190,7 +196,7 @@
 		color: #999999;
 		padding: 0.8rem 0.3rem;
 		border-bottom: 1px solid #E5E5E5;
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 	.register_mains span{
 		position: absolute;

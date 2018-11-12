@@ -1,7 +1,7 @@
 <template>
-	<div @click="footer_tab" class="item tac">
+	<div @click="footer_tab" class="item tac pr nine999">
 		<slot name="tabicon"></slot>
-		<p>{{ txt }}</p>
+		<p class="centerh bottom pb0d6r">{{ txt }}</p>
 	</div>
 </template>
 

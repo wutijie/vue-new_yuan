@@ -115,6 +115,18 @@ html,body{
 body{
 	position:relative;
 }
+.oy0d2{
+	opacity: 0.2;
+}
+.oy0d4{
+	opacity: 0.4;
+}
+.oy0d6{
+	opacity: 0.6;
+}
+.oy0d8{
+	opacity: 0.8;
+}
 /* 特殊定位 */
 .full{
     box-sizing:border-box;
@@ -414,6 +426,12 @@ body{
 }
 .vab{
 	vertical-align:bottom
+}
+.vatt{
+	vertical-align: text-top;
+}
+.vatb{
+	vertical-align:text-bottom
 }
 .vac{
 	vertical-align:super
@@ -720,6 +738,7 @@ body{
 .h0d95r{height:0.95rem}
 .w1r{width:1rem}
 .h1r{height:1rem}
+.w1d2r{width:1.2rem}
 .w1d25r{width:1.25rem}
 .h1d25r{height:1.25rem}
 .w1d5r{width:1.5rem}
@@ -743,8 +762,10 @@ body{
 .w3d5r{width:3.5rem}
 .h3d5r{height:3.5rem}
 .h3d6r{height:3.6rem}
+.h3d8r{height:3.8rem}
 .h3d9r{height:3.9rem}
 .w4r{width:4rem}
+.w3d8r{width:3.8rem}
 .w4d5r{width:4.5rem}
 .h4r{height:4rem}
 .h5r{height:5rem}
@@ -762,6 +783,8 @@ body{
 .w7d5r{width: 7.5rem}
 .h7d5r{height: 7.5rem}
 .h10r{height: 10rem}
+.w8r{width:8rem}
+.h8r{height: 8rem}
 .h7d3r{height: 7.3rem}
 
 /* 内边距 */
@@ -1944,4 +1967,11 @@ footer{
 }
 .sidebar_left{
 	margin-left: 0!important;
+}
+
+.slider{
+	background: -webkit-linear-gradient(#a2a3fc,#9cc4fc); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(#a2a3fc,#9cc4fc); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(#a2a3fc,#9cc4fc); /* Firefox 3.6 - 15 */
+	background: linear-gradient(#a2a3fc,#9cc4fc); /* 标准的语法 */
 }

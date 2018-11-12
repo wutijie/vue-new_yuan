@@ -2,32 +2,30 @@
 	<transition name="login_fade">
 		<section class="fs1d5r lh2r full flex-grail login">
 			<headers class="bgcnone" title=""></headers>
-			<main class="pr login_mains">
-				<div class="pa center w100p pv4r ph3r bsbb h100p">
-					<form @submit.prevent="user_login" class="bgcwhite h100p br6px pv4r ph3r bsbb fs1d2r">
-						<p class="tac fs1d9r mb1r">登录</p>
-						<p>
-							<input type="tel" :class="{act_border : phone_show}" @focus="phone_show = false" v-model="user_mesg.phone" placeholder="请输入手机号" />
-							<span v-show="phone_show">{{error_msg_phone}}</span>
+			<main class="login_mains pv4r ph3r bsbb">
+				<form @submit.prevent="user_login" class="bgcwhite h100p br6px pv4r ph3r bsbb fs1d2r">
+					<p class="tac fs1d9r mb1r">登录</p>
+					<p>
+						<input type="tel" :class="{act_border : phone_show}" @focus="phone_show = false" v-model="user_mesg.phone" placeholder="请输入手机号" />
+						<span v-show="phone_show">{{error_msg_phone}}</span>
+					</p>
+					<p>
+						<input type="text" :class="{act_border : password_show}" @focus="password_show = false" v-model="user_mesg.pasword" placeholder="请输入密码" />
+						<span v-show="password_show">{{error_msg_password}}</span>
+					</p>
+					<div class="mt2r">
+						<input type="checkbox" id="remember_pas" />
+						<label for="remember_pas">记住密码</label>
+					</div>
+					<div class="dv mt4r">
+						<p class="">
+							<button type="submit" class="btn1 white">立即登录</button>
 						</p>
-						<p>
-							<input type="text" :class="{act_border : password_show}" @focus="password_show = false" v-model="user_mesg.pasword" placeholder="请输入密码" />
-							<span v-show="password_show">{{error_msg_password}}</span>
+						<p class="mt2r">
+							<button type="button" class="b1 nine999" @click="$router.replace('/register')">立即注册</button>
 						</p>
-						<div class="mt2r">
-							<input type="checkbox" id="remember_pas" />
-							<label for="remember_pas">记住密码</label>
-						</div>
-						<div class="dv mt6r">
-							<p class="">
-								<button type="submit" class="btn1 white">立即登录</button>
-							</p>
-							<p class="mt2r">
-								<button type="button" class="b1 nine999" @click="$router.replace('/register')">立即注册</button>
-							</p>
-						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 			</main>
 		</section>
 	</transition>
@@ -123,7 +121,7 @@
 		color: #999999;
 		padding: 0.8rem 0.3rem;
 		border-bottom: 1px solid #E5E5E5;
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 	.login_mains input[type=checkbox]{
 		width: 1rem;

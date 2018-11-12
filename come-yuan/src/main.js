@@ -9,8 +9,8 @@ import { store } from '../store/index'
 
 //引入axios
 import axios from 'axios'
-//axios.defaults.baseUrl = '@/local/'
-Vue.prototype.http = axios
+//axios.defaults.baseUrl = 'https://wd0227110045vvxhbf.wilddogio.com/'
+Vue.prototype.$http = axios
 
 //引入element-ui
 import ElementUI from 'element-ui'
@@ -29,8 +29,8 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+	el: '#app',
 	store,
-  	el: '#app',
   	router,
   	components: { App },
   	template: '<App/>',
@@ -53,4 +53,3 @@ new Vue({
   		}
   	}
 })
-
