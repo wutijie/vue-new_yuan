@@ -54,7 +54,31 @@
 		},
 		methods:{
 			user_login(){
-				var uermsg = JSON.parse(this.$store.state.user.current_user);
+				
+				this.$http.get("https://wd0227110045vvxhbf.wilddogio.com/user.json").then(res => {
+					const data = res.data;
+					const users = [];
+					for(let key in data){
+						const user = data[key];
+						// console.log(user);
+						users.push(user);
+					}
+					users.forEach((val,index) => {
+						if(this.user_mesg.phone == val.phone){
+							this.ishave = val;
+						}
+					});
+						
+					if( !this.isPhone() || !this.isPassword() ){
+						return;
+					}
+					localStorage.setItem('login_user', "yes");
+					this.$store.commit("setUserStatus",true);
+					this.$router.push('/home');
+						
+				});
+				
+				/*var uermsg = JSON.parse(this.$store.state.user.current_user);
 				
 				if(this.ishave == null){
 					this.$message({
@@ -76,7 +100,7 @@
 					localStorage.setItem('login_user', "yes");
 					this.$store.commit("setUserStatus",true);
 					this.$router.push('/home');
-				}
+				}*/
 			},
 			isPhone(){
 				if( !this.user_mesg.phone ){

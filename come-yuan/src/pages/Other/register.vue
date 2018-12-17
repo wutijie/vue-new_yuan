@@ -102,10 +102,19 @@
 					return;
 				}
 				
+				/*this.$http.post("https://wd0227110045vvxhbf.wilddogio.com/user.json",data_msg).then(res => {
+					console.log(res);
+				})*/
+				
 				local_msg.push(data_msg);
 				localStorage.setItem('key', JSON.stringify(local_msg));
 				this.$store.commit("setUser", JSON.stringify(local_msg));
 				this.$router.push('/login');
+				this.$message({
+					message: "注册成功",
+					type: 'success',
+					duration: 3000
+				});
 			},
 			sendCode(){
 				const _this = this;
