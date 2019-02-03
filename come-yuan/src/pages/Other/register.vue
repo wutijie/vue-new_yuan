@@ -1,7 +1,7 @@
 <template>
 	<transition name="register_fade">
 		<section class="fs1d5r lh2r full flex-grail register">
-			<headers class="bgcnone" title=""></headers>
+			<Headers class="bgcnone" title=""></Headers>
 			<main class="register_mains pv4r ph3r bsbb">
 				<form @submit.prevent="user_register" class="bgcwhite h100p br6px pv4r ph3r bsbb fs1d2r">
 					<p class="tac fs1d9r mb1r">注册</p>
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-	import Headers from '../../components/header'
 	
 	export default {
 		data(){
@@ -60,7 +59,7 @@
 			}
 		},
 		components:{
-			Headers
+			
 		},
 		computed:{
 			
@@ -102,10 +101,19 @@
 					return;
 				}
 				
+				/*this.$http.post("https://wd0227110045vvxhbf.wilddogio.com/user.json",data_msg).then(res => {
+					console.log(res);
+				})*/
+				
 				local_msg.push(data_msg);
 				localStorage.setItem('key', JSON.stringify(local_msg));
 				this.$store.commit("setUser", JSON.stringify(local_msg));
 				this.$router.push('/login');
+				this.$message({
+					message: "注册成功",
+					type: 'success',
+					duration: 3000
+				});
 			},
 			sendCode(){
 				const _this = this;

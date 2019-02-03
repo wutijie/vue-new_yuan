@@ -22,8 +22,11 @@ Vue.use(ElementUI)
 import './assets/css/main.css'
 //public js
 import './assets/js/all.js'
-
-
+//public components
+import Headers from './components/header.vue'
+import Tabbar from './components/tabbar.vue'
+Vue.component("Headers",Headers);
+Vue.component("Tabbar",Tabbar);
 Vue.config.productionTip = false
 
 
@@ -31,16 +34,16 @@ Vue.config.productionTip = false
 new Vue({
 	el: '#app',
 	store,
-  	router,
-  	components: { App },
-  	template: '<App/>',
-  	created(){
+	router,
+	components: { App },
+	template: '<App/>',
+	created(){
 		this.getStatus();
-  	},
-  	methods:{
-  		getStatus(){
-  			if(localStorage.getItem("key")){
-  				this.$store.commit("setUser", localStorage.getItem("key"));
+	},
+	methods:{
+		getStatus(){
+			if(localStorage.getItem("key")){
+				this.$store.commit("setUser", localStorage.getItem("key"));
 			}else{
 				this.$store.commit("setUser", []);
 			}
@@ -50,6 +53,6 @@ new Vue({
 				this.$store.commit("setUserStatus",false);
 			}
 			console.log(this.$store.getters.isLogin)
-  		}
-  	}
+		}
+	}
 })

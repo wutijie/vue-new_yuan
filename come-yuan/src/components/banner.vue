@@ -4,6 +4,7 @@
 		  	<div class="swiper-wrapper">
 			    <div class="swiper-slide bsbb h100p bgcwhite" v-for="(elem,index) in ban_ban" :key="index">
 			    	{{ elem.msg }}
+			    	<img class="w100p" :src="elem.img_src"/>
 			    </div>
 		  	</div>
 		  	<!--<div class="swiper-pagination"></div>-->

@@ -34,19 +34,19 @@ const state = {
 	home_banner:[
 		{
 			'id' : 0,
-			'img_src' : '../../assets/images/banner01.jpg',
+			'img_src' : require('@/assets/images/banner01.jpg'),
 			'msg' : 'slider1',
 			'bgc' : 'bgc00c8b3'
 		},
 		{
 			'id' : 1,
-			'img_src' : '',
+			'img_src' : require('@/assets/images/banner01.jpg'),
 			'msg' : 'slider2',
 			'bgc' : 'bgc4blue'
 		},
 		{
 			'id' : 2,
-			'img_src' : '',
+			'img_src' : require('@/assets/images/banner01.jpg'),
 			'msg' : 'slider3',
 			'bgc' : 'bgc9pur'
 		}

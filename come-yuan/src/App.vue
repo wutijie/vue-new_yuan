@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-  		<keep-alive>
-	    	<router-view/>
-  		</keep-alive>
+    	<router-view/>
   </div>
 </template>
 
 <script>
+	//public components
+	import Headers from './components/header.vue'
+	import Tabbar from './components/tabbar.vue'
 	export default {
-	  name: 'App'
+	  name: 'App',
+	  components: { Headers, Tabbar },
 	}
 </script>
 

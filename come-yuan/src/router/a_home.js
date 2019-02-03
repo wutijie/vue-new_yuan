@@ -1,7 +1,7 @@
 import Home from '../pages/Home/a_home'
 
 import Music from '../pages/Home/music'
-import Slider from '../components/slider'
+import Slider from '../pages/Slider/a_slider'
 import Search from '../pages/Home/search'
 
 export default [
@@ -10,7 +10,8 @@ export default [
       	component: Home,
       	meta: {
             keepAlive: false, //此组件不需要被缓存
-        }
+       	},
+       	redirect: '/home'
    	},
 	{
       	path: '/home',

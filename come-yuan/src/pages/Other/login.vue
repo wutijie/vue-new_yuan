@@ -1,7 +1,7 @@
 <template>
 	<transition name="login_fade">
 		<section class="fs1d5r lh2r full flex-grail login">
-			<headers class="bgcnone" title=""></headers>
+			<Headers class="bgcnone" title=""></Headers>
 			<main class="login_mains pv4r ph3r bsbb">
 				<form @submit.prevent="user_login" class="bgcwhite h100p br6px pv4r ph3r bsbb fs1d2r">
 					<p class="tac fs1d9r mb1r">登录</p>
@@ -32,7 +32,6 @@
 </template>
 
 <script>
-	import Headers from '../../components/header'
 	export default {
 		data(){
 			return {
@@ -45,7 +44,7 @@
 			}
 		},
 		components:{
-			Headers
+			
 		},
 		computed:{
 			current_user(){
@@ -54,7 +53,31 @@
 		},
 		methods:{
 			user_login(){
-				var uermsg = JSON.parse(this.$store.state.user.current_user);
+				
+				this.$http.get("https://wd0227110045vvxhbf.wilddogio.com/user.json").then(res => {
+					const data = res.data;
+					const users = [];
+					for(let key in data){
+						const user = data[key];
+						// console.log(user);
+						users.push(user);
+					}
+					users.forEach((val,index) => {
+						if(this.user_mesg.phone == val.phone){
+							this.ishave = val;
+						}
+					});
+						
+					if( !this.isPhone() || !this.isPassword() ){
+						return;
+					}
+					localStorage.setItem('login_user', "yes");
+					this.$store.commit("setUserStatus",true);
+					this.$router.push('/home');
+						
+				});
+				
+				/*var uermsg = JSON.parse(this.$store.state.user.current_user);
 				
 				if(this.ishave == null){
 					this.$message({
@@ -76,7 +99,7 @@
 					localStorage.setItem('login_user', "yes");
 					this.$store.commit("setUserStatus",true);
 					this.$router.push('/home');
-				}
+				}*/
 			},
 			isPhone(){
 				if( !this.user_mesg.phone ){

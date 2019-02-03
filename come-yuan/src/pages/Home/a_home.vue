@@ -12,7 +12,9 @@
 				<img class="w100p" @click="herder_music" slot="header_right" src="../../assets/images/header_music.png"/>
 			</Headers>
 			<main>
-				<router-view class="pf h100p w100p zi2"></router-view>
+				<keep-alive>
+					<router-view class="pf h100p w100p zi2"></router-view>
+				</keep-alive>
 				<Banner></Banner>
 				<Classification></Classification>
 				<Welfare></Welfare>
@@ -23,8 +25,6 @@
 </template>
 
 <script>
-	import Headers from '../../components/header'
-	import Tabbar from '../../components/tabbar'
 	import Banner from './banner'
 	import Classification from './classification'
 	import Welfare from './daily_welfare'
@@ -32,7 +32,7 @@
 	
 	export default {
 		components:{
-			Headers,Tabbar,Banner,Classification,Welfare
+			Banner,Classification,Welfare
 		},
 		computed:{
 			ban_swiper(){
