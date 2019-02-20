@@ -30,8 +30,11 @@ const mutations = {
 	}
 }
 const actions = {
-	
+	setRecentSearch({ commit }, data){
+		commit('setIsAuthenticated', data);
+	}
 }
+
 export default {
 	state,
 	getters,

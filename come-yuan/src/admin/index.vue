@@ -3,7 +3,7 @@
 		<admin-header></admin-header>
 		<main class="box h100p bsbb">
 			<admin-left></admin-left>
-			<div class="item w60p h100p aside_right">
+			<div class="item w60p h100p aside_right bsbb">
 				<router-view/>
 			</div>
 		</main>
@@ -28,5 +28,9 @@
 	}
 	.admin>main{
 		padding-top: 60px;
+	}
+	.admin .aside_right{
+		overflow-y: scroll;
+		padding: 10px;
 	}
 </style>

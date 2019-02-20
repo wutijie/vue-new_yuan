@@ -35,8 +35,8 @@
 			Banner,Classification,Welfare
 		},
 		computed:{
-			ban_swiper(){
-				return this.$store.getters.ban_swiper;
+			home_benefits(){
+				return this.$store.getters.home_benefits;
 			},
 			isSidebarOpen(){
 				return this.$store.getters.isSidebarOpen;

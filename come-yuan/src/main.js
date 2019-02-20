@@ -21,7 +21,8 @@ Vue.use(ElementUI)
 //public css
 import './assets/css/main.css'
 //public js
-import './assets/js/all.js'
+import pubjs from './assets/js/all.js'
+Vue.use(pubjs);
 //public components
 import Headers from './components/header.vue'
 import Tabbar from './components/tabbar.vue'

@@ -3,7 +3,7 @@
 		<div class="swiper-container bsbb" id="home_ban">
 		  	<div class="swiper-wrapper">
 			    <div class="swiper-slide bsbb" v-for="(elem,index) in home_banner" :key="index">
-			    	<img class="w100p" :src="elem.img_src"/>
+			    	<img class="w100p" :src="elem.src"/>
 			    </div>
 		  	</div>
 		  	<div class="swiper-pagination"></div>
@@ -16,24 +16,26 @@
 	export default {
 		computed:{
 			home_banner(){
-//				console.log("首页首页",this.$store.getters.home_banner);
+				console.log("首页首页",this.$store.getters.home_banner);
 				return this.$store.getters.home_banner;
 			}
 		},
 		mounted(){
 			//初始化swiper
-			var mySwiper = new Swiper('#home_ban',{
-				pagination: {
-				    el: '.swiper-pagination',
-				    clickable :true,
-				},
-				autoplay:true,
-				on:{
-				    tap: function(){
-				    	console.log(this.realIndex+1)
-				    },
-				},
-			});
+			setTimeout(function(){
+				var mySwiper = new Swiper('#home_ban',{
+					pagination: {
+					    el: '.swiper-pagination',
+					    clickable :true,
+					},
+					autoplay:true,
+					on:{
+					    tap: function(){
+					    	console.log(this.realIndex+1)
+					    },
+					},
+				});
+			},200);
 			
 		}
 	}

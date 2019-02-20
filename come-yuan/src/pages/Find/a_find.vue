@@ -9,7 +9,7 @@
 				<button class="white" slot="header_center">发现</button>
 			</Headers>
 			<main class="">
-				<Banner slidesperview="1.4" :bandata="ban_swiper"></Banner>
+				<Banner slidesperview="1.4" :bandata="home_benefits"></Banner>
 			</main>
 			<Tabbar></Tabbar>
 		</section>
@@ -24,8 +24,8 @@
 			Banner
 		},
 		computed:{
-			ban_swiper(){
-				return JSON.stringify(this.$store.getters.ban_swiper);
+			home_benefits(){
+				return JSON.stringify(this.$store.getters.home_benefits);
 			},
 			isSidebarOpen(){
 				return this.$store.getters.isSidebarOpen;

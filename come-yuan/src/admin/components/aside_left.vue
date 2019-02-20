@@ -1,6 +1,6 @@
 <template>
 	<div class="item flexnone w20p h100p aside_left">
-		<Bitem one="首页,admin_home_swiper" two="轮播图:admin_home_swiper,2:admin_find"></Bitem>
+		<Bitem one="首页,admin_home_swiper" two="轮播图:admin_home_swiper,每日福利:admin_home_daily_benefits,分类:admin_home_classification"></Bitem>
 		<Bitem one="发现,admin_find" two="1:admin_find,2:admin_find"></Bitem>
 	</div>
 </template>

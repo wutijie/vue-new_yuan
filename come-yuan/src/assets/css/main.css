@@ -700,6 +700,7 @@ body{
 .w200p{width:200%}
 .h100p{height:100%}
 .wh100p{width:100%;height:100%}
+
 .w0d1r{width:0.1rem}
 .h0d1r{height:0.1rem}
 .w0d15r{width:0.15rem}
@@ -786,7 +787,9 @@ body{
 .w8r{width:8rem}
 .h8r{height: 8rem}
 .h7d3r{height: 7.3rem}
-
+.w100px{width: 100px}
+.h100px{height:100px}
+.h200px{height:200px}
 /* 内边距 */
 .p0{padding:0}
 .ph0{padding-left:0;padding-right:0}
@@ -1500,6 +1503,14 @@ body{
 .mr3d5r{margin-right:3.5rem}
 .mt3d5r{margin-top:3.5rem}
 .mb3d5r{margin-bottom:3.5rem}
+
+.mh10px{margin-left:10px;margin-right:10px}
+.mv10px{margin-top:10px;margin-bottom:10px}
+.ml10px{margin-left:10px}
+.mr10px{margin-right:10px}
+.mt10px{margin-top:10px}
+.mb10px{margin-bottom:10px}
+
 .m4r{margin:4rem}
 .mh4r{margin-left:4rem;margin-right:4rem}
 .mv4r{margin-top:4rem;margin-bottom:4rem}

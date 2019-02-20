@@ -2,12 +2,12 @@
 	<div class="banner_wrap bsbb">
 		<div class="swiper-container bsbb" id="swiper_find">
 		  	<div class="swiper-wrapper">
-			    <div class="swiper-slide bsbb h100p bgcwhite" v-for="(elem,index) in ban_ban" :key="index">
-			    	{{ elem.msg }}
-			    	<img class="w100p" :src="elem.img_src"/>
+			    <div class="swiper-slide bsbb h100p bgcwhite oh" v-for="(elem,index) in ban_ban" :key="index">
+			    	<img class="w100p" :src="elem.src"/>
+			    	<p>{{ elem.name }}</p>
+			    	{{ elem.describe }}
 			    </div>
 		  	</div>
-		  	<!--<div class="swiper-pagination"></div>-->
 		</div>
 	</div>
 </template>
@@ -23,34 +23,37 @@
 		props:['slidesperview','bandata'],
 		created(){
 			this.ban_ban = JSON.parse(this.bandata);
-			console.log(this.ban_ban)
+			console.log("下面的",this.ban_ban)
 		},
 		mounted(){
-			//初始化swiper
-			var mySwiper = new Swiper('#swiper_find',{
-				/*pagination: {
-				    el: '.swiper-pagination',
-				    clickable :true,
-				},*/
-				watchActiveIndex: true,
-				paginationClickable: true,
-				//设定初始化时slide的索引
-				initialSlide :1,
-				//设置为true时，鼠标覆盖Swiper时指针会变成手掌形状，拖动时指针会变成抓手形状。（根据浏览器形状有所不同）
-				grabCursor : true,
-				//设置slider容器能够同时显示的slides数量(carousel模式)。
-				slidesPerView : this.slidesperview,
-				//设定为true时，active slide会居中，而不是默认状态下的居左。
-				centeredSlides : true,
-				preventClicks : true,
-				//在slide之间设置距离（单位px）。
-				//spaceBetween : 5,
-				on:{
-				    tap: function(){
-				    	console.log(this.realIndex+1)
-				    },
-				},
-			});
+			console.log(this.slidesperview)
+//			setTimeout(function(){
+				//初始化swiper
+				var mySwiper = new Swiper('#swiper_find',{
+					/*pagination: {
+					    el: '.swiper-pagination',
+					    clickable :true,
+					},*/
+					watchActiveIndex: true,
+					paginationClickable: true,
+					//设定初始化时slide的索引
+					initialSlide :1,
+					//设置为true时，鼠标覆盖Swiper时指针会变成手掌形状，拖动时指针会变成抓手形状。（根据浏览器形状有所不同）
+					grabCursor : true,
+					//设置slider容器能够同时显示的slides数量(carousel模式)。
+					slidesPerView : this.slidesperview,
+					//设定为true时，active slide会居中，而不是默认状态下的居左。
+					centeredSlides : true,
+					preventClicks : true,
+					//在slide之间设置距离（单位px）。
+					//spaceBetween : 5,
+					on:{
+					    tap: function(){
+					    	console.log(this.realIndex+1)
+					    },
+					},
+				});
+//			},100);
 			
 		}
 	}
