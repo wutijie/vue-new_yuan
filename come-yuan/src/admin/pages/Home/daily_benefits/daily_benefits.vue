@@ -1,34 +1,46 @@
 <template>
-	<div class="">
-		<el-row>
-			<el-button @click="handleAdd()" class="fr mb10px" type="primary">添加</el-button>
-		</el-row>
-		<el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
-			<el-table-column label="甜品名" prop="name">
-			</el-table-column>
-			<el-table-column label="描述" prop="describe">
-			</el-table-column>
-			<el-table-column align="right">
-				<template slot="header" slot-scope="scope">
-					<el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
-				</template>
-				<template slot-scope="scope">
-					<el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-					<el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-				</template>
-			</el-table-column>
-		</el-table>
-		<el-pagination background layout="prev, pager, next, jumper" :total="30" :page-size="10" @current-change="handleCurrentChange">
-		</el-pagination>
-	</div>
+
+	<el-container class="h100p">
+		<el-header class="pr">
+			<el-row class="centerv right">
+				<el-button @click="handleAdd()" class="fr" type="primary">添加</el-button>
+			</el-row>
+		</el-header>
+		<el-main class="h100p" style="padding: 0;">
+			<el-table height="100%" :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+				<el-table-column label="甜品名" prop="name">
+				</el-table-column>
+				<el-table-column label="描述" prop="describe">
+				</el-table-column>
+				<el-table-column align="right">
+					<template slot="header" slot-scope="scope">
+						<el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
+					</template>
+					<template slot-scope="scope">
+						<el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+						<el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+					</template>
+				</el-table-column>
+			</el-table>
+		</el-main>
+		<el-footer class="pr">
+			<el-pagination class="center" background layout="prev, pager, next, jumper" :total="total" :page-size="pagesize" @current-change="handleCurrentChange">
+			</el-pagination>
+		</el-footer>
+	</el-container>
+
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
+				search: '',
 				tableData: [],
-				search: ''
+				tableDataAll: [],
+				total: 0,
+				pagesize: 10,
+				reallySize: 0
 			}
 		},
 		created() {
@@ -44,15 +56,33 @@
 						console.log(post)
 					})*/
 					for(let i in data) {
+						this.total++;
 						data[i].id = i;
 						console.log(data[i])
-						this.tableData.push(data[i]);
+						this.tableDataAll.push(data[i]);
+					}
+					if(this.total>this.pagesize){
+						this.reallySize = this.pagesize;
+					}else{
+						this.reallySize = this.total;
+					}
+					for(let i = 0; i < this.reallySize; i++) {
+						this.tableData.push(this.tableDataAll[i]);
 					}
 					console.log(this.tableData);
 				})
 			},
 			handleCurrentChange(val) {
-       			console.log(`当前页: ${val}`);
+//     			console.log(`当前页: ${val}`);
+				if(this.total>this.pagesize){
+					this.reallySize = this.pagesize;
+				}else{
+					this.reallySize = this.total;
+				}
+				this.tableData = [];
+				for(let i = (val - 1) * this.reallySize; i < this.reallySize * val; i++) {
+					this.tableData.push(this.tableDataAll[i]);
+				}
 			},
 			handleAdd() {
 				this.$router.push("/admin/admin_home_daily_benefits_add");
