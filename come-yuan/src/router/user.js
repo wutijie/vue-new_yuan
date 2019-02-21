@@ -10,10 +10,6 @@ export default [
    	...Home,
    	...Shopcar,
    	...Slider,
-<<<<<<< HEAD
    	...Other,
    	...Admin
-=======
-   	...Other
->>>>>>> 3a2f696f8743a4cebc005bbe6447162694bdf03c
 ]
