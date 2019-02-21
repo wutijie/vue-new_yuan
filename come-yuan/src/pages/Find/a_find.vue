@@ -5,11 +5,19 @@
 		</div>
 		<section :class="{ sidebar_right : isSidebarOpen }" id="app_right" class="full flex-grail tdu0d5s">
 			<div :class="{ dn : !isSidebarOpen }" @click="$router.go(-1)" id="mask" class="w100p h100p pa zi4"></div>
+<<<<<<< HEAD
 			<Headers>
 				<button class="white" slot="header_center">发现</button>
 			</Headers>
 			<main class="">
 				<Banner slidesperview="1.4" :bandata="home_benefits"></Banner>
+=======
+			<Header>
+				<button class="white" slot="header_center">发现</button>
+			</Header>
+			<main class="">
+				<Banner slidesperview="1.4" :bandata="ban_swiper"></Banner>
+>>>>>>> 3a2f696f8743a4cebc005bbe6447162694bdf03c
 			</main>
 			<Tabbar></Tabbar>
 		</section>
@@ -17,15 +25,28 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+	import Header from '../../components/header.vue'
+	import Tabbar from '../../components/tabbar.vue'
+>>>>>>> 3a2f696f8743a4cebc005bbe6447162694bdf03c
 	import Banner from '../../components/banner'
 	
 	export default {
 		components:{
+<<<<<<< HEAD
 			Banner
 		},
 		computed:{
 			home_benefits(){
 				return JSON.stringify(this.$store.getters.home_benefits);
+=======
+			Header,Tabbar,Banner
+		},
+		computed:{
+			ban_swiper(){
+				return JSON.stringify(this.$store.getters.ban_swiper);
+>>>>>>> 3a2f696f8743a4cebc005bbe6447162694bdf03c
 			},
 			isSidebarOpen(){
 				return this.$store.getters.isSidebarOpen;

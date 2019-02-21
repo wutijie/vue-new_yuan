@@ -2,7 +2,11 @@
 	<div class="daily_welfare">
 		<h2 class="fs1d6r tac pv1d25r">每日福利</h2>
 		<div class="dv">
+<<<<<<< HEAD
 			<Banner slidesperview="1.2" :bandata="home_benefits"></Banner>
+=======
+			<Banner slidesperview="1.2" :bandata="home_banner"></Banner>
+>>>>>>> 3a2f696f8743a4cebc005bbe6447162694bdf03c
 		</div>
 	</div>
 </template>
@@ -15,8 +19,13 @@
 			Banner
 		},
 		computed:{
+<<<<<<< HEAD
 			home_benefits(){
 				return JSON.stringify(this.$store.getters.home_benefits);
+=======
+			home_banner(){
+				return JSON.stringify(this.$store.getters.home_banner);
+>>>>>>> 3a2f696f8743a4cebc005bbe6447162694bdf03c
 			}
 		}
 	}
