@@ -1,7 +1,7 @@
 <template>
 	<div class="daily_welfare">
 		<h2 class="fs1d6r tac pv1d25r">每日福利</h2>
-		<div class="dv">
+		<div class="dv tac">
 			<Banner slidesperview="1.2" :bandata="home_benefits"></Banner>
 		</div>
 	</div>
